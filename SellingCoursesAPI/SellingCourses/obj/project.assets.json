@@ -4451,19 +4451,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\khanh truong\\.nuget\\packages\\": {}
+    "C:\\Users\\huy nguyen\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\SellingCourses\\SellingCoursesAPI\\SellingCourses\\SellingCourses.csproj",
+      "projectUniqueName": "E:\\Tai_lieu\\Nam_4\\Do_an_react_native\\SellingCourse\\Project\\selling-courses\\SellingCoursesAPI\\SellingCourses\\SellingCourses.csproj",
       "projectName": "SellingCourses",
-      "projectPath": "E:\\SellingCourses\\SellingCoursesAPI\\SellingCourses\\SellingCourses.csproj",
-      "packagesPath": "C:\\Users\\khanh truong\\.nuget\\packages\\",
-      "outputPath": "E:\\SellingCourses\\SellingCoursesAPI\\SellingCourses\\obj\\",
+      "projectPath": "E:\\Tai_lieu\\Nam_4\\Do_an_react_native\\SellingCourse\\Project\\selling-courses\\SellingCoursesAPI\\SellingCourses\\SellingCourses.csproj",
+      "packagesPath": "C:\\Users\\huy nguyen\\.nuget\\packages\\",
+      "outputPath": "E:\\Tai_lieu\\Nam_4\\Do_an_react_native\\SellingCourse\\Project\\selling-courses\\SellingCoursesAPI\\SellingCourses\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\khanh truong\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\huy nguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4545,7 +4545,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }
