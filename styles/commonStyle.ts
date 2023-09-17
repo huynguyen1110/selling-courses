@@ -47,6 +47,12 @@ export const styles = StyleSheet.create({
         borderBottomColor: '#0a0a0a',
         width: "100%"
     },
+    half_underline_border: {
+        borderBottomWidth: 2,
+        opacity: 0.3,
+        borderBottomColor: '#0a0a0a',
+        width: "45%"
+    },
     large_margin_top: {
         marginTop: 30
     },
@@ -58,6 +64,11 @@ export const styles = StyleSheet.create({
     },
     text_input: {
         width: "80%",
+        height: 30,
+        padding: 8
+    },
+    small_text_input: {
+        width: "45%",
         height: 30,
         padding: 8
     }

@@ -1,7 +1,10 @@
+import { registerUri } from "../api/appApi";
+import { RegisterInterface } from "../interfaces/authenticateInterfaces/authenticateInterface"
+import axios from 'axios'
 
 export function validateFullName(fullName: string) {
     if (fullName.trim() === '') {
-      return 'Vui lòng nhập họ và tên';
+      return 'Không để trông trường này';
     }
     return '';
   }
@@ -38,4 +41,36 @@ export function validatePassword(password: string) {
         return 'Mật khẩu có ít nhất một ký tự đặc biệt';
     }
     return '';
+}
+
+export function validatePhoneNumber(phoneNumber: string) {
+  const regex = /^(0[1-9][0-9]{8}|[+][8][4][1-9][0-9]{7})$/;
+
+  if(phoneNumber === '') {
+    return 'Vui lòng nhập số điện thoại'
+  }
+
+  if (!regex.test(phoneNumber)) {
+    return 'Số điện thoại không hợp lệ'
+  }
+  return ''
+}
+
+export function registerService( { firstname, lastname, email, phoneNumber, password } : RegisterInterface ) {
+  try {
+    const responseData = axios({
+      method: 'POST',
+      url: registerUri,
+      data: {
+        firstName: firstname,
+        lastName: lastname,
+        email: email,
+        sdt: phoneNumber,
+        password: password
+      }
+    })
+    return responseData
+  } catch(err) {
+    console.log(err + "sa")
+  }
 }
