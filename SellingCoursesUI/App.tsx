@@ -13,10 +13,10 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName='LoginScreen'>
-        <Stack.Screen name='RegisterScreen' component={RegisterScreen} />
-        <Stack.Screen name='LoginScreen' component={LoginScreen} />
-        <Stack.Screen name='ForgotPassWordScreen' component={ForgotPassWordScreen} />
-        <Stack.Screen name='HomeScreen' component={HomeScreen} />
+        <Stack.Screen name='RegisterScreen' component={RegisterScreen} options={{headerShown:false}} />
+        <Stack.Screen name='LoginScreen' component={LoginScreen} options={{headerShown:false}} />
+        <Stack.Screen name='ForgotPassWordScreen' component={ForgotPassWordScreen} options={{headerShown:false}} />
+        <Stack.Screen name='HomeScreen' component={HomeScreen} options={{headerShown:false}} />
       </Stack.Navigator>
     </NavigationContainer>
   );
