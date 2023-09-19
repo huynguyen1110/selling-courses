@@ -8,33 +8,55 @@ import { Svg, Path  } from 'react-native-svg';
 import { styles } from "../styles/commonStyle";
 import { loginRegisterStyles } from "../styles/loginRegisterStyles";
 import { buttonStyles } from "../components/ButtonStyles";
-import { validateEmail, validateFullName, validatePassword } from "../services/authentication/loginRegesterServices";
+import { validateEmail, validateFullName, validatePassword } from "../ultils/validate";
+import { registerApi } from "../services/authentication/loginRegesterServices";
 
 
 const RegisterScreen = ( { navigation } : {navigation: any} ) => {
 
     const [formData, setFormData] = useState({
-        fullName: '',
+        firstName: '',
+        lastName: '',
+        sdt: '',
         email: '',
         password: '',
     });
     
     const [errors, setErrors] = useState({
-        fullName: '',
+        firstName: '',
+        lastName: '',
+        sdt: '',
         email: '',
         password: '',
     });
 
-    const handleRegister = () => {
-        const fullNameError = validateFullName(formData.fullName);
-        const emailError = validateEmail(formData.email);
-        const passwordError = validatePassword(formData.password);
+    const handleRegister = async() => {
+        try {
+            const firstNameError = validateFullName(formData.firstName);
+            const lastNameError = validateFullName(formData.lastName);
+            const sdtError = validateFullName(formData.sdt);
+            const emailError = validateEmail(formData.email);
+            const passwordError = validatePassword(formData.password);
 
-        setErrors({
-            fullName: fullNameError,
-            email: emailError,
-            password: passwordError,
-        })
+            setErrors({
+                firstName: firstNameError,
+                lastName: lastNameError,
+                sdt: sdtError,
+                email: emailError,
+                password: passwordError,
+            })
+            
+            if(firstNameError === ''&& lastNameError === '' 
+            && sdtError === '' && emailError === '' && passwordError === '' )
+            {
+                var registerResponse = await registerApi(formData);
+                alert(registerResponse?.data?.message);
+                navigation.navigate("LoginScreen");
+            }
+
+        } catch (error) {
+            alert(error)
+        }
     }
 
     return (
@@ -48,13 +70,38 @@ const RegisterScreen = ( { navigation } : {navigation: any} ) => {
                         <Svg style={[styles.icon_style]} viewBox="0 0 448 512">
                             <Path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/>
                         </Svg>
-                        <TextInput style={[styles.text_input]} placeholder="Họ và tên" onChangeText={(value) => setFormData( {
+                        <TextInput style={[styles.text_input]} placeholder="Họ" onChangeText={(value) => setFormData( {
                             ...formData,
-                            fullName: value
+                            firstName: value
+                        } )}/>
+                    </View>
+
+                    <View style={[styles.underline_border]}></View>
+                    <Text style={[loginRegisterStyles.err_message]}>{errors.firstName}</Text>
+
+                    <View style={[styles.horizontal_container, styles.small_margin_vertical]}>
+                        <Svg style={[styles.icon_style]} viewBox="0 0 448 512">
+                            <Path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/>
+                        </Svg>
+                        <TextInput style={[styles.text_input]} placeholder="Tên" onChangeText={(value) => setFormData( {
+                            ...formData,
+                            lastName: value
                         } )}/>
                     </View>
                     <View style={[styles.underline_border]}></View>
-                    <Text style={[loginRegisterStyles.err_message]}>{errors.fullName}</Text>
+                    <Text style={[loginRegisterStyles.err_message]}>{errors.lastName}</Text>
+
+                    <View style={[styles.horizontal_container, styles.small_margin_vertical]}>
+                        <Svg style={[styles.icon_style]} viewBox="0 0 512 512">
+                            <Path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/>
+                        </Svg>
+                        <TextInput style={[styles.text_input]} placeholder="Số điện thoại" onChangeText={(value) => setFormData( {
+                            ...formData,
+                            sdt: value
+                        } )}/>
+                    </View>
+                    <View style={[styles.underline_border]}></View>
+                    <Text style={[loginRegisterStyles.err_message]}>{errors.sdt}</Text>
 
                     <View style={[styles.horizontal_container, styles.small_margin_vertical]}>
                         <Svg style={[styles.icon_style]} viewBox="0 0 512 512">
@@ -91,7 +138,9 @@ const RegisterScreen = ( { navigation } : {navigation: any} ) => {
                         <TouchableOpacity onPress={() => { 
                             navigation.navigate("LoginScreen") 
                             setErrors({
-                                fullName: '',
+                                firstName: '',
+                                lastName: '',
+                                sdt: '',
                                 email: '',
                                 password: ''
                             })

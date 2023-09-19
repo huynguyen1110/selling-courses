@@ -8,7 +8,7 @@ import { Svg, Path  } from 'react-native-svg';
 import { styles } from "../styles/commonStyle";
 import { loginRegisterStyles } from "../styles/loginRegisterStyles";
 import { buttonStyles } from "../components/ButtonStyles";
-import { validateEmail, validateFullName, validatePassword } from "../services/authentication/loginRegesterServices";
+import { validateEmail, validateFullName, validatePassword } from "../ultils/validate";
 
 
 const ForgotPassWordScreen = () => {

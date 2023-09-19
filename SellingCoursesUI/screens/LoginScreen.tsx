@@ -3,12 +3,13 @@ import { SafeAreaView,
     TextInput,
     TouchableOpacity,
     View } from "react-native"
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import { Svg, Path  } from 'react-native-svg';
 import { styles } from "../styles/commonStyle";
 import { loginRegisterStyles } from "../styles/loginRegisterStyles";
 import { buttonStyles } from "../components/ButtonStyles";
-import {validateEmail, validateFullName, validatePassword } from "../services/authentication/loginRegesterServices";
+import { validateEmail, validatePassword } from "../ultils/validate";
+import { getAccessToken, loginApi, setAccessToken } from "../services/authentication/loginRegesterServices";
 
 
 const LoginScreen = ( {navigation} : {navigation: any} ) => {
@@ -21,20 +22,50 @@ const LoginScreen = ( {navigation} : {navigation: any} ) => {
     });
     
     const [errors, setErrors] = useState({
-        email: '',
-        password: '',
+        email: ''
     });
 
-    const handleLogin = () => {
-        const emailError = validateEmail(formData.email);
-        const passwordError = validatePassword(formData.password);
-
-        setErrors({
-            email: emailError,
-            password: passwordError,
+    const resetFormData = () => {
+        setFormData({
+            email: '',
+            password: ''
         })
     }
+    
+    const handleLogin = async() => {
+        try {
+            const emailError = validateEmail(formData.email);
 
+            setErrors({
+                email: emailError
+            })
+            
+            if(emailError === '' && formData.password !== '')
+            {
+                var loginData = await loginApi(formData);
+                setAccessToken(loginData?.data?.token)
+                alert(loginData?.data?.message)
+                if(loginData?.data?.statusCode === "Success")
+                {
+                    navigation.navigate("HomeScreen",resetFormData())
+                }
+            }
+        } catch (error) {
+            alert(error)
+        }
+    }
+
+    const checkLogin = async() => {
+        var token = await getAccessToken();
+        if(token && token === '')
+        {
+            navigation.navigate("HomeScreen")
+        }
+    }
+
+    useEffect(() => {
+        checkLogin();
+    }, [])
     return (
         <SafeAreaView style={[styles.main_container]} >
                 <View style={[loginRegisterStyles.form_container]}>
@@ -46,7 +77,7 @@ const LoginScreen = ( {navigation} : {navigation: any} ) => {
                             <Svg style={[styles.icon_style]} viewBox="0 0 512 512">
                                 <Path d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"/>
                             </Svg>
-                            <TextInput style={[styles.text_input]} placeholder="Email" onChangeText={(value) => setFormData( {
+                            <TextInput style={[styles.text_input]} value={formData.email} placeholder="Email" onChangeText={(value) => setFormData( {
                             ...formData,
                             email: value
                         } )} />
@@ -59,7 +90,7 @@ const LoginScreen = ( {navigation} : {navigation: any} ) => {
                                 <Svg style={[styles.icon_style]} viewBox="0 0 448 512">
                                     <Path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/>
                                 </Svg>
-                                <TextInput style={styles.text_input} placeholder="Nhập mật khẩu" secureTextEntry={!passwordVisible}
+                                <TextInput style={styles.text_input} value={formData.password} placeholder="Nhập mật khẩu" secureTextEntry={!passwordVisible}
                                 onChangeText={(value) => setFormData( {
                                     ...formData,
                                     password: value
@@ -81,7 +112,6 @@ const LoginScreen = ( {navigation} : {navigation: any} ) => {
                             </View>
                         </View>
                         <View style={[styles.underline_border]}></View>
-                        <Text style={[loginRegisterStyles.err_message]}>{errors.password}</Text>
 
                         <TouchableOpacity style={[buttonStyles.large_blue_button, styles.medium_margin_vertical]} 
                         onPress= {handleLogin}>
@@ -94,7 +124,7 @@ const LoginScreen = ( {navigation} : {navigation: any} ) => {
                             </View>
                             <View>
                                 <TouchableOpacity onPress={ () => {
-                                    navigation.navigate("ForgotPassWordScreen")
+                                    navigation.navigate("ForgotPassWordScreen",resetFormData())
                                 } }>
                                     <Text style={[styles.text_content, styles.text_blue]}>Quên mật khẩu?</Text>
                                 </TouchableOpacity>
@@ -104,10 +134,9 @@ const LoginScreen = ( {navigation} : {navigation: any} ) => {
                         <View style={[styles.horizontal_container, styles.item_center, styles.small_margin_vertical]}>
                             <Text style={[styles.text_content]}>Bạn chưa có tài khoản ? </Text>
                             <TouchableOpacity onPress={() => {
-                                navigation.navigate("RegisterScreen")
+                                navigation.navigate("RegisterScreen",resetFormData())
                                 setErrors({
-                                    email: '',
-                                    password: ''
+                                    email: ''
                                 })
                                 } }>
                                 <Text style={[styles.text_content, styles.text_blue]}>Đăng ký mới</Text>

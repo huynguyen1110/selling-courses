@@ -1,41 +1,66 @@
+import axios from "axios";
+import * as SecureStore from 'expo-secure-store'
+import { LoginData, RegisterData } from "../interfaces/authenticateInterfaces";
+import axiosInstance, { addTokenToAxios } from "../../axios";
 
-export function validateFullName(fullName: string) {
-    if (fullName.trim() === '') {
-      return 'Vui lòng nhập họ và tên';
-    }
-    return '';
+export const loginApi = ({ email, password }: LoginData) => {
+    return axiosInstance({
+        method: "POST",
+        url: "/user/login",
+        data: {
+            email,
+            password
+        }
+    })
+}
+
+export function registerApi( { firstName, lastName, sdt, email, password } : RegisterData ) {
+  try {
+    const responseData = axiosInstance({
+      method: 'POST',
+      url: "/user/create",
+      data: {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        sdt: sdt,
+        password: password
+      }
+    })
+    return responseData
+  } catch(err) {
+    alert(err)
   }
-  
-export function validateEmail(email: string) {
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
-    if (email.trim() === '') {
-      return 'Vui lòng nhập email';
-    } else if(!emailRegex.test(email)) {
-        return 'email không hợp lệ'
-    }
-    return '';
 }
-  
-export function validatePassword(password: string) {
 
-    const specialCharRegex = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/
-    const capitalLettersRegex = /[A-Z]/
-
-    if (password.trim() === '') {
-      return 'Vui lòng nhập mật khẩu'
+//Access token 
+export const setAccessToken = async(accessToken : string) => {
+    if(!accessToken) {
+        return false
     }
-
-    if (password.length < 8) {
-        return 'Độ dài mật khẩu tối thiểu 8 ký tự'
-    } 
-    
-    if (!capitalLettersRegex.test(password)) {
-        return 'Mật khẩu phải có ít nhất một ký tự in hoa'
+    try {
+        await SecureStore.setItemAsync('accessToken', accessToken)
+        addTokenToAxios(accessToken)
+        return true
+    } catch(error) {
+        alert(error)
     }
-
-    if (!specialCharRegex.test(password)) {
-        return 'Mật khẩu có ít nhất một ký tự đặc biệt';
-    }
-    return '';
+    return false
 }
+
+export const getAccessToken = async() => {
+    try {
+        const accessToken = await SecureStore.getItemAsync('accessToken')
+        return accessToken
+    } catch (error) {
+        alert(error)
+        return null
+    }
+}
+
+// const getUsersTest = async() => {
+//     return axios({
+//         method: "GET",
+//         url: BASE_URL.concat("/users"),
+//     })
+// }
