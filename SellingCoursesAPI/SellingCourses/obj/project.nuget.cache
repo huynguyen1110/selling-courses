@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5Yp7q5fTnvLQPF0K10MYEOh8nKWs6KtzCS4gt1IoySy3zf4z/Wp4WVnDh7vua66+9cZJVUCMTKVB1XAE60dilg==",
+  "dgSpecHash": "fR3FTUQIzr79/wr+HM79nKfm9R2ALdUWuqzxHnhsQNmGQ/T37propb+fgNLBX7jNA7TaEMM51qSzizXMv3Cx0g==",
   "success": true,
-  "projectFilePath": "E:\\Tai_lieu\\Nam_4\\Do_an_react_native\\SellingCourse\\Project\\selling-courses\\SellingCoursesAPI\\SellingCourses\\SellingCourses.csproj",
+  "projectFilePath": "E:\\Tai_lieu\\Nam_4\\Do_an_react_native\\Project\\selling-courses\\SellingCoursesAPI\\SellingCourses\\SellingCourses.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\huy nguyen\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\huy nguyen\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

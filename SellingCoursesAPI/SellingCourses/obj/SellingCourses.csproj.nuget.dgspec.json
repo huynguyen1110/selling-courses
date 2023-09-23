@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Tai_lieu\\Nam_4\\Do_an_react_native\\SellingCourse\\Project\\selling-courses\\SellingCoursesAPI\\SellingCourses\\SellingCourses.csproj": {}
+    "E:\\Tai_lieu\\Nam_4\\Do_an_react_native\\Project\\selling-courses\\SellingCoursesAPI\\SellingCourses\\SellingCourses.csproj": {}
   },
   "projects": {
-    "E:\\Tai_lieu\\Nam_4\\Do_an_react_native\\SellingCourse\\Project\\selling-courses\\SellingCoursesAPI\\SellingCourses\\SellingCourses.csproj": {
+    "E:\\Tai_lieu\\Nam_4\\Do_an_react_native\\Project\\selling-courses\\SellingCoursesAPI\\SellingCourses\\SellingCourses.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Tai_lieu\\Nam_4\\Do_an_react_native\\SellingCourse\\Project\\selling-courses\\SellingCoursesAPI\\SellingCourses\\SellingCourses.csproj",
+        "projectUniqueName": "E:\\Tai_lieu\\Nam_4\\Do_an_react_native\\Project\\selling-courses\\SellingCoursesAPI\\SellingCourses\\SellingCourses.csproj",
         "projectName": "SellingCourses",
-        "projectPath": "E:\\Tai_lieu\\Nam_4\\Do_an_react_native\\SellingCourse\\Project\\selling-courses\\SellingCoursesAPI\\SellingCourses\\SellingCourses.csproj",
+        "projectPath": "E:\\Tai_lieu\\Nam_4\\Do_an_react_native\\Project\\selling-courses\\SellingCoursesAPI\\SellingCourses\\SellingCourses.csproj",
         "packagesPath": "C:\\Users\\huy nguyen\\.nuget\\packages\\",
-        "outputPath": "E:\\Tai_lieu\\Nam_4\\Do_an_react_native\\SellingCourse\\Project\\selling-courses\\SellingCoursesAPI\\SellingCourses\\obj\\",
+        "outputPath": "E:\\Tai_lieu\\Nam_4\\Do_an_react_native\\Project\\selling-courses\\SellingCoursesAPI\\SellingCourses\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\huy nguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
