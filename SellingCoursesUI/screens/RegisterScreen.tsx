@@ -37,7 +37,7 @@ const RegisterScreen = ( { navigation } : {navigation: any} ) => {
             const sdtError = validateFullName(formData.sdt);
             const emailError = validateEmail(formData.email);
             const passwordError = validatePassword(formData.password);
-
+            
             setErrors({
                 firstName: firstNameError,
                 lastName: lastNameError,
@@ -45,6 +45,7 @@ const RegisterScreen = ( { navigation } : {navigation: any} ) => {
                 email: emailError,
                 password: passwordError,
             })
+
             
             if(firstNameError === ''&& lastNameError === '' 
             && sdtError === '' && emailError === '' && passwordError === '' )

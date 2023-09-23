@@ -22,7 +22,8 @@ const LoginScreen = ( {navigation} : {navigation: any} ) => {
     });
     
     const [errors, setErrors] = useState({
-        email: ''
+        email: '',
+        password: ''
     });
 
     const resetFormData = () => {
@@ -35,9 +36,13 @@ const LoginScreen = ( {navigation} : {navigation: any} ) => {
     const handleLogin = async() => {
         try {
             const emailError = validateEmail(formData.email);
-
+            let passwordEmptyErr = ''
+            if (formData.password == '') {
+                passwordEmptyErr = "Vui lòng nhập mật khẩu" 
+            }
             setErrors({
-                email: emailError
+                email: emailError,
+                password: passwordEmptyErr
             })
             
             if(emailError === '' && formData.password !== '')
@@ -112,6 +117,7 @@ const LoginScreen = ( {navigation} : {navigation: any} ) => {
                             </View>
                         </View>
                         <View style={[styles.underline_border]}></View>
+                        <Text style={[loginRegisterStyles.err_message]}>{errors.password}</Text>
 
                         <TouchableOpacity style={[buttonStyles.large_blue_button, styles.medium_margin_vertical]} 
                         onPress= {handleLogin}>
