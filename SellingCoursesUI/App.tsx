@@ -6,17 +6,20 @@ import RegisterScreen from './screens/RegisterScreen';
 import LoginScreen from './screens/LoginScreen';
 import ForgotPassWordScreen from './screens/ForgotPasswordScreen';
 import HomeScreen from './screens/HomeScreen';
+import ImageBannerCarousel from './components/Banner/CarouselBanner';
+
 
 const Stack = createNativeStackNavigator()
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='LoginScreen'>
+      <Stack.Navigator initialRouteName='image'>
         <Stack.Screen name='RegisterScreen' component={RegisterScreen} options={{headerShown:false}} />
         <Stack.Screen name='LoginScreen' component={LoginScreen} options={{headerShown:false}} />
         <Stack.Screen name='ForgotPassWordScreen' component={ForgotPassWordScreen} options={{headerShown:false}} />
         <Stack.Screen name='HomeScreen' component={HomeScreen} options={{headerShown:false}} />
+        <Stack.Screen name='image' component={ImageBannerCarousel} options={{headerShown:false}} />
       </Stack.Navigator>
     </NavigationContainer>
   );

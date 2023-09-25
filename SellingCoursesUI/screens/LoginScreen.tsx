@@ -2,7 +2,8 @@ import { SafeAreaView,
     Text,
     TextInput,
     TouchableOpacity,
-    View } from "react-native"
+    View,
+    Image } from "react-native"
 import {useState, useEffect} from 'react'
 import { Svg, Path  } from 'react-native-svg';
 import { styles } from "../styles/commonStyle";
