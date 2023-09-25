@@ -7,6 +7,7 @@ export const CarouselBannerStyle = StyleSheet.create({
     },
     image_style: {
         width: 300,
-        height: 200,
+        height: 250,
+        borderRadius: 2,
     }
 })

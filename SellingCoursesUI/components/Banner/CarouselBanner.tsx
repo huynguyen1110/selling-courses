@@ -18,19 +18,19 @@ const ImageBannerCarousel = () => {
     useEffect(() => {
         const initialData = [
         {
-            name: require('../assets/images/test_images/sach1.jpg'),
+            name: require('../../assets/images/test_images/sach1.jpg'),
         },
         {
-            name: require('../assets/images/test_images/sach2.jpg'),
+            name: require('../../assets/images/test_images/sach2.jpg'),
         },
         {
-            name: require('../assets/images/test_images/sach3.jpg'),
+            name: require('../../assets/images/test_images/sach3.jpg'),
         },
         {
-            name: require('../assets/images/test_images/sach4.jpg'),
+            name: require('../../assets/images/test_images/sach4.jpg'),
         },
         {
-          name: require('../assets/images/test_images/sach4.jpg'),
+            name: require('../../assets/images/test_images/sach4.jpg'),
         },
         ];
     
@@ -47,20 +47,15 @@ const ImageBannerCarousel = () => {
 
     useEffect(() => {
       const scrollInterval = setInterval(() => {
-        // Tính toán vị trí tiếp theo
         const nextIndex = currentIndex + 1 < images.length ? currentIndex + 1 : 0;
-        // Cuộn đến vị trí tiếp theo
         scrollViewRef.current?.scrollToIndex({ index: nextIndex, animated: true, viewPosition: 0.5 });
-        // Cập nhật currentIndex
         setCurrentIndex(nextIndex);
-      }, 3000); // Khoảng thời gian tự động cuộn (3 giây trong ví dụ này)
+      }, 3000);
   
       return () => {
-        // Xóa interval khi component unmount
         clearInterval(scrollInterval);
       };
     }, [currentIndex]);
-
 
 
     const renderImages = (item, index) => {
@@ -73,13 +68,13 @@ const ImageBannerCarousel = () => {
 
         const translateY = scrollX.interpolate({
             inputRange,
-            outputRange: [100, 50, 100],
+            outputRange: [60, 50, 60],
             extrapolate: 'clamp',
         });
 
-        // if (item.key) {
-        //   return <View style={{ width: SPACER_ITEM_SIZE }} />;
-        // }
+        if (item.key) {
+          return <View style={{ width: 30 }} />;
+        }
     
         if (item.name) {
           return (
