@@ -33,28 +33,22 @@ builder.Services.AddDbContext<SellingCoursesDbContext>(options =>
 });
 #endregion
 
-#region config author
-JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
-builder.Services.AddAuthentication(options =>
+#region config authentication
+var secretKey = builder.Configuration["JWT:Secret"];
+var secretKeyByte = Encoding.UTF8.GetBytes(secretKey);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
 {
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(options =>
-{
-    options.TokenValidationParameters = new TokenValidationParameters
+    opt.TokenValidationParameters = new TokenValidationParameters
     {
-        ValidAudience = builder.Configuration["JWT:ValidAudience"],
-        ValidateAudience = true,
-        ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
-        ValidateIssuer = true,
-        ValidateLifetime = true,
+        ValidateIssuer = false,
+        ValidateAudience = false,
+
         ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"])),
-        ClockSkew = TimeSpan.Zero // remove delay of token when expire,
+        IssuerSigningKey = new SymmetricSecurityKey(secretKeyByte),
+
+        ClockSkew = TimeSpan.Zero
     };
-    options.RequireHttpsMetadata = false;
 });
 #endregion
 

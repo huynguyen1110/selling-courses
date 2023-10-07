@@ -58,15 +58,14 @@ namespace SellingCourses.Services.Implements
                 {
                     new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
                     new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                    new Claim(ClaimTypes.Name, user.FirstName + " " + user.LastName),
                     new Claim(CustomClaimRoles.UserType, user.IdRole.ToString())
                 };
 
                 var token = new JwtSecurityToken(
-                    issuer: _configuration["JWT:ValidIssuer"],
-                    audience: _configuration["JWT:ValidAudience"],
                     expires: DateTime.Now.AddSeconds(_configuration.GetValue<int>("JWT:Expires")),
                     claims: claims,
-                    signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
+                    signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha512Signature)
                 );
 
                 return new JwtSecurityTokenHandler().WriteToken(token);
