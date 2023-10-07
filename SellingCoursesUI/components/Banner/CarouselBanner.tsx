@@ -25,7 +25,7 @@ const ImageBannerCarousel = () => {
 
   const scrollX = useRef(new Animated.Value(0)).current
 
-  const snapInterval = itemWidth;
+  const snapInterval = itemWidth + 10;
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -34,19 +34,19 @@ const ImageBannerCarousel = () => {
   useEffect(() => {
     const initialData = [
       {
-        name: require('../../assets/images/test_images/sach1.jpg'),
+        name: require('../../assets/images/banner_images/banner1.jpeg'),
       },
       {
-        name: require('../../assets/images/test_images/sach2.jpg'),
+        name: require('../../assets/images/banner_images/banner2.jpeg'),
       },
       {
-        name: require('../../assets/images/test_images/sach3.jpg'),
+        name: require('../../assets/images/banner_images/banner3.jpg'),
       },
       {
-        name: require('../../assets/images/test_images/sach4.jpg'),
+        name: require('../../assets/images/banner_images/banner4.png'),
       },
       {
-        name: require('../../assets/images/test_images/sach4.jpg'),
+        name: require('../../assets/images/banner_images/banner4.png'),
       },
     ];
 
@@ -54,16 +54,22 @@ const ImageBannerCarousel = () => {
   }, []);
 
   useEffect(() => {
-    const scrollInterval = setInterval(() => {
-      const nextIndex = currentIndex + 1 < images.length ? currentIndex + 1 : 0;
-      scrollViewRef.current?.scrollToIndex({ index: nextIndex, animated: true, viewPosition: 0.5 });
-      setCurrentIndex(nextIndex);
-    }, 3000);
-
+    let scrollInterval: any
+  
+    const startAutoScroll = () => {
+      scrollInterval = setInterval(() => {
+        const nextIndex = currentIndex + 1 < images.length ? currentIndex + 1 : 0;
+        scrollViewRef.current?.scrollToIndex({ index: nextIndex, animated: true, viewPosition: 0.5 });
+        setCurrentIndex(nextIndex);
+      }, 3000);
+    };
+  
+    startAutoScroll();
+  
     return () => {
       clearInterval(scrollInterval);
     };
-  }, [currentIndex]);
+  }, [currentIndex, []]);
 
   const renderImages = (item, index) => {
 
@@ -92,6 +98,11 @@ const ImageBannerCarousel = () => {
             justifyContent: 'space-between',
             backgroundColor: 'white',
             transform: [{ translateY }],
+            shadowColor: 'black',
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.5,
+            shadowRadius: 4,
+            elevation: 5
           }}>
           <Image source={item.name} style={CarouselBannerStyle.image_style} />
         </Animated.View>
