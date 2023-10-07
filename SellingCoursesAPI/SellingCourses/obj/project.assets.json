@@ -4456,11 +4456,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\SellingCourses\\SellingCoursesAPI\\SellingCourses\\SellingCourses.csproj",
+      "projectUniqueName": "E:\\Da_Nen_Tang\\SellingCoursesAPI\\SellingCourses\\SellingCourses.csproj",
       "projectName": "SellingCourses",
-      "projectPath": "E:\\SellingCourses\\SellingCoursesAPI\\SellingCourses\\SellingCourses.csproj",
+      "projectPath": "E:\\Da_Nen_Tang\\SellingCoursesAPI\\SellingCourses\\SellingCourses.csproj",
       "packagesPath": "C:\\Users\\khanh truong\\.nuget\\packages\\",
-      "outputPath": "E:\\SellingCourses\\SellingCoursesAPI\\SellingCourses\\obj\\",
+      "outputPath": "E:\\Da_Nen_Tang\\SellingCoursesAPI\\SellingCourses\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\khanh truong\\AppData\\Roaming\\NuGet\\NuGet.Config",

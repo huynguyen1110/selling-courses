@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EVFoF3aFxd/TQFddDqbed9yVEW8aQwPhO7veo2aUt3FlugqePtvnhFq2MHCtm+yYaSjvkWbrnZBwIVwQZjc0Eg==",
+  "dgSpecHash": "s2jWlj1OrGbsZdrRZm6xN4NrIt+Al4ZPvwwJ8jEhg4qq3Om5vH2Xi1rZMyZRMeqgz3odlpkaYhrf7bTOeRL/9Q==",
   "success": true,
-  "projectFilePath": "E:\\SellingCourses\\SellingCoursesAPI\\SellingCourses\\SellingCourses.csproj",
+  "projectFilePath": "E:\\Da_Nen_Tang\\SellingCoursesAPI\\SellingCourses\\SellingCourses.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\khanh truong\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\khanh truong\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
