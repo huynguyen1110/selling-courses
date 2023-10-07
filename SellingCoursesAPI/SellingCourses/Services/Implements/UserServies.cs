@@ -13,7 +13,7 @@ namespace SellingCourses.Services.Implements
     public class UserServies : IUserServices
     {
         private readonly SellingCoursesDbContext _dbContext;
-        private readonly IConfiguration _configuration;
+        private readonly IConfiguration _configuration; 
 
         public UserServies(SellingCoursesDbContext dbContext, IConfiguration configuration)
         {

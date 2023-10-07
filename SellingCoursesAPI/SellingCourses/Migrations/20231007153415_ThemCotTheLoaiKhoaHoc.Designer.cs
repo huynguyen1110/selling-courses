@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SellingCourses;
 
@@ -11,9 +12,11 @@ using SellingCourses;
 namespace SellingCourses.Migrations
 {
     [DbContext(typeof(SellingCoursesDbContext))]
-    partial class SellingCoursesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231007153415_ThemCotTheLoaiKhoaHoc")]
+    partial class ThemCotTheLoaiKhoaHoc
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -166,7 +169,7 @@ namespace SellingCourses.Migrations
 
                     b.Property<string>("CreateBy")
                         .IsRequired()
-                        .HasColumnType("NVARCHAR(MAX)");
+                        .HasColumnType("NVARCHAR");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("BIT");
@@ -178,20 +181,20 @@ namespace SellingCourses.Migrations
                         .HasColumnType("DECIMAL(10,2)");
 
                     b.Property<string>("GioiThieu")
-                        .HasColumnType("NVARCHAR(MAX)");
+                        .HasColumnType("NVARCHAR");
 
                     b.Property<string>("NoiDung")
-                        .HasColumnType("NVARCHAR(MAX)");
+                        .HasColumnType("NVARCHAR");
 
                     b.Property<string>("TenKhoaHoc")
                         .IsRequired()
-                        .HasColumnType("NVARCHAR(MAX)");
+                        .HasColumnType("NVARCHAR(50)");
 
                     b.Property<string>("TheLoai")
-                        .HasColumnType("VARCHAR(MAX)");
+                        .HasColumnType("NVARCHAR");
 
                     b.Property<string>("Thumnail")
-                        .HasColumnType("NVARCHAR(MAX)");
+                        .HasColumnType("NVARCHAR");
 
                     b.Property<DateTime>("UpdateAt")
                         .HasColumnType("DATETIME");

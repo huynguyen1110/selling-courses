@@ -12,10 +12,10 @@ namespace SellingCourses.Entities
         public int Id { get; set; }
 
         [Required]
-        [Column(TypeName = "NVARCHAR(50)")]
+        [Column(TypeName = "NVARCHAR(MAX)")]
         public string TenKhoaHoc { get; set; }
 
-        [Column(TypeName = "NVARCHAR")]
+        [Column(TypeName = "NVARCHAR(MAX)")]
         public string Thumnail { get; set; }
 
         [Required]
@@ -26,25 +26,26 @@ namespace SellingCourses.Entities
         [Column(TypeName = "DECIMAL(10,2)")]
         public Decimal GiaGiam { get; set; }
 
-        [Column(TypeName = "NVARCHAR")]
+        [Column(TypeName = "NVARCHAR(MAX)")]
         public string NoiDung { get; set; } = string.Empty;
 
-        [Column(TypeName = "NVARCHAR")]
+        [Column(TypeName = "NVARCHAR(MAX)")]
         public string GioiThieu { get; set; } = string.Empty;
+
+        [Column(TypeName = "VARCHAR(MAX)")]
+        public string TheLoai { get; set; }
 
         [Column(TypeName = "BIT")]
         public bool Deleted { get; set; }
 
-        [Required]
         [Column(TypeName = "DATETIME")]
         public DateTime CreateAt { get; set; }
 
-        [Required]
         [Column(TypeName = "DATETIME")]
         public DateTime UpdateAt { get; set; }
 
         [Required]
-        [Column(TypeName = "NVARCHAR")]
+        [Column(TypeName = "NVARCHAR(MAX)")]
         public string CreateBy { get; set; }
     }
 }

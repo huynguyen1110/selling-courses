@@ -62,6 +62,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddAutoMapper(typeof(Program));
 
 #region config swagger
 builder.Services.AddSwaggerGen(c =>
@@ -98,6 +99,8 @@ builder.Services.AddSwaggerGen(c =>
 #endregion
 
 builder.Services.AddScoped<IUserServices, UserServies>();
+builder.Services.AddScoped<IKhoaHocServices, KhoaHocServices>();
+
 
 var app = builder.Build();
 
