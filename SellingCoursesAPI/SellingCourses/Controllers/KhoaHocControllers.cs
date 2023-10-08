@@ -15,11 +15,11 @@ namespace SellingCourses.Controllers
             this.khoaHocServices = khoaHocServices;
         }
 
-        [HttpGet("get-all")]
-        public IActionResult Index()
+        [HttpGet("get-all-theloai")]
+        public IActionResult Index(string theLoai)
         {
             try {
-                var result = khoaHocServices.GetAllKhoaHoc();
+                var result = khoaHocServices.GetAllKhoaHoc(theLoai);
                 return Ok(result);
             } catch(Exception ex)
             {

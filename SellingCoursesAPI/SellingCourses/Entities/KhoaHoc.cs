@@ -39,10 +39,11 @@ namespace SellingCourses.Entities
         public bool Deleted { get; set; }
 
         [Column(TypeName = "DATETIME")]
-        public DateTime CreateAt { get; set; }
+        public DateTime? CreateAt { get; set; }
 
+        
         [Column(TypeName = "DATETIME")]
-        public DateTime UpdateAt { get; set; }
+        public DateTime? UpdateAt { get; set; }
 
         [Required]
         [Column(TypeName = "NVARCHAR(MAX)")]

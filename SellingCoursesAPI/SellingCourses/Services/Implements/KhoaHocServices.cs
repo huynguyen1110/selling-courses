@@ -22,9 +22,15 @@ namespace SellingCourses.Services.Implements
             _configuration = configuration;
         }
 
-        public List<GetKhoaHocDto> GetAllKhoaHoc()
+        public List<GetKhoaHocDto> GetAllKhoaHoc(string theLoai)
         {
+
             var khoaHocList = _dbContext.KhoaHocs.ToList();
+
+            if (theLoai != null) {
+                khoaHocList = _dbContext.KhoaHocs.Where(khoaHoc => khoaHoc.TheLoai == theLoai).ToList();
+            }
+
             if (khoaHocList != null)
             {
                 List<GetKhoaHocDto> khoaHocDtoList = _mapper.Map<List<GetKhoaHocDto>>(khoaHocList);
