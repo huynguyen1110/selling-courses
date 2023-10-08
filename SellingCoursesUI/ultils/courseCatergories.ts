@@ -1,0 +1,1 @@
+export const CONG_NGHE_THONG_TIN = "IT"

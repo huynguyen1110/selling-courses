@@ -18,8 +18,27 @@ import { styles } from "../../styles/commonStyle";
 import { bestSallingCourses } from "../../services/course_services/course_fake_data";
 import { CourseInterface } from "../../services/interfaces/commoninterfaces";
 import { courseContentStyles } from "./CourseContentStyle";
+import { getAllKhoaHoc } from "../../services/course_services/courseServices";
+import { CONG_NGHE_THONG_TIN } from "../../ultils/courseCatergories";
 
 const CourseContents = () => {
+
+    const getKhoaHocIt = async () => {
+        const theLoai = CONG_NGHE_THONG_TIN;
+        const page = 1;
+        const pageSize = 10;
+    
+        try {
+          const response = await getAllKhoaHoc(theLoai, page, pageSize);
+          console.log(response);
+        } catch (err) {
+          console.error(err);
+        }
+      };
+
+    useEffect(() => {
+        getKhoaHocIt()
+    }, [])
 
     const renderTopsellerItems = ({ item }: { item: CourseInterface }) => {
         let bestSellerItem = item
