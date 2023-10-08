@@ -26,6 +26,8 @@ namespace SellingCourses.Entities
         [Column(TypeName = "DECIMAL(10,2)")]
         public Decimal GiaGiam { get; set; }
 
+        public int LuotBan { get; set; }
+
         [Column(TypeName = "NVARCHAR(MAX)")]
         public string NoiDung { get; set; } = string.Empty;
 

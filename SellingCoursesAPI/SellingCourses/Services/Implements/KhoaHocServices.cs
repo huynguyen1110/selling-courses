@@ -5,6 +5,7 @@ using SellingCourses.Entities;
 using SellingCourses.Services.Interfaces;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using System.Drawing;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SellingCourses.Services.Implements
 {
@@ -41,6 +42,17 @@ namespace SellingCourses.Services.Implements
                 List<GetKhoaHocDto> khoaHocDtoList = _mapper.Map<List<GetKhoaHocDto>>(khoaHocList);
                 return khoaHocDtoList;
 
+            }
+            return null;
+        }
+
+        public List<GetKhoaHocDto> GetKhoaHocBanChay()
+        {
+            var BestSeller = _dbContext.KhoaHocs.Where(khoaHoc => khoaHoc.LuotBan > 20).ToList();
+            if (BestSeller != null)
+            {
+                var KhoaHocListDto = _mapper.Map<List<GetKhoaHocDto>>(BestSeller); 
+                return KhoaHocListDto;
             }
             return null;
         }

@@ -14,6 +14,8 @@ namespace SellingCourses.Dtos.KhoaHoc
 
         public Decimal GiaGiam { get; set; }
 
+        public int LuotBan { get; set; }
+
         public string NoiDung { get; set; } = string.Empty;
 
         public string GioiThieu { get; set; } = string.Empty;

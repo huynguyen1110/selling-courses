@@ -26,5 +26,19 @@ namespace SellingCourses.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet("get-ban_chay")]
+        public IActionResult GetKhoaHocBanChay()
+        {
+            try
+            {
+                var Result = khoaHocServices.GetKhoaHocBanChay();
+                return Ok(Result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
