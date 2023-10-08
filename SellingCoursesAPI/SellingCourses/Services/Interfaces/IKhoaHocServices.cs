@@ -4,6 +4,6 @@ namespace SellingCourses.Services.Interfaces
 {
     public interface IKhoaHocServices
     {
-        List<GetKhoaHocDto> GetAllKhoaHoc(string theLoai);
+        List<GetKhoaHocDto> GetAllKhoaHoc(string theLoai, int page, int pageSize);
     }
 }

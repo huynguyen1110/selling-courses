@@ -3,6 +3,8 @@ using Microsoft.Extensions.Configuration;
 using SellingCourses.Dtos.KhoaHoc;
 using SellingCourses.Entities;
 using SellingCourses.Services.Interfaces;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using System.Drawing;
 
 namespace SellingCourses.Services.Implements
 {
@@ -22,7 +24,7 @@ namespace SellingCourses.Services.Implements
             _configuration = configuration;
         }
 
-        public List<GetKhoaHocDto> GetAllKhoaHoc(string theLoai)
+        public List<GetKhoaHocDto> GetAllKhoaHoc(string theLoai, int page, int pageSize)
         {
 
             var khoaHocList = _dbContext.KhoaHocs.ToList();
@@ -30,6 +32,9 @@ namespace SellingCourses.Services.Implements
             if (theLoai != null) {
                 khoaHocList = _dbContext.KhoaHocs.Where(khoaHoc => khoaHoc.TheLoai == theLoai).ToList();
             }
+           
+            int skip = (page - 1) * pageSize;
+            khoaHocList = _dbContext.KhoaHocs.Skip(skip).Take(pageSize).ToList();
 
             if (khoaHocList != null)
             {
