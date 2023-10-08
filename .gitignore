@@ -72,3 +72,5 @@ yarn-error.*
 /SellingCoursesAPI/.vs/SellingCourses/DesignTimeBuild/.dtbcache.v2
 /SellingCoursesAPI/.vs/ProjectEvaluation/sellingcourses.projects.v7.bin
 /SellingCoursesAPI/.vs/ProjectEvaluation/sellingcourses.metadata.v7.bin
+/SellingCoursesAPI/SellingCourses/obj/Debug/net6.0/ref/SellingCourses.dll
+/SellingCoursesAPI/SellingCourses/bin/Debug/net6.0/SellingCourses.pdb
